@@ -1,6 +1,6 @@
 # spaceifier-app
 
-This is a GUI application which adds spaces too letters.
+This is a GUI application which adds spaces to letters.
 
 Ex. Hello, world! -> H e l l o ,  w o r l d !
 
