@@ -9,8 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Deps
-      run: apt install build-essential
     - name: Spaceifier crate test
       run: |
           cd spaceifier
