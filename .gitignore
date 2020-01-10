@@ -1,4 +1,5 @@
 /target
+spaceifier/target
 **/*.rs.bk
 
 .idea

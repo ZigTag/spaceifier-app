@@ -3,7 +3,8 @@
 pub mod utils {
     /// Takes a number and returns the amount of spaces in a string.
     /// ```
-    /// let string = spaceifier::gen_space(4);
+    /// use spaceifier::utils;
+    /// let string = utils::gen_space(4);
     ///
     /// assert_eq!(string, "    ");
     /// ```
@@ -25,7 +26,7 @@ pub mod utils {
     ///
     /// let text = utils::add_stuff_to_string("Hello!", "-");
     ///
-    /// assert_eq!(text, "H-e-l-l-o-!");
+    /// assert_eq!(text, "H-e-l-l-o-!-");
     /// ```
     pub fn add_stuff_to_string(text: &str, addition: &str) -> String {
 
@@ -46,7 +47,7 @@ pub mod utils {
 /// ```
 /// let text = spaceifier::spaceify("Hello, world!", 1);
 ///
-/// assert_eq!(text, "H e l l o ,  w o r l d!");
+/// assert_eq!(text, "H e l l o ,   w o r l d !");
 /// ```
 pub fn spaceify(text: &str, space_num: i32) -> String {
     
