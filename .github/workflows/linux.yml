@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Install Packages
+      run: sudo apt install xorg 
     - name: Spaceifier crate test
       run: |
           cd spaceifier
