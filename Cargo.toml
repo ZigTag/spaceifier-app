@@ -9,5 +9,5 @@ license = "MIT"
 
 [dependencies]
 spaceifier = { path = "./spaceifier" }
-iced = "0.1.0-beta"
+iced = "0.1"
 clipboard = "0.5"

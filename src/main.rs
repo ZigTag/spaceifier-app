@@ -2,12 +2,32 @@ use iced::{
     button, text_input, Application, Button, Column, Command, Container, Element, Row, Settings,
     Text, TextInput,
 };
-use iced::{Background, Color, HorizontalAlignment, Length};
+use iced::{executor, Background, Color, HorizontalAlignment, Length};
 
 use clipboard::{ClipboardContext, ClipboardProvider};
 
 fn main() {
     SpaceifierApp::run(Settings::default());
+}
+
+struct CopyButtonStyle;
+
+impl button::StyleSheet for CopyButtonStyle {
+    fn active(&self) -> button::Style {
+        button::Style {
+            shadow_offset: Default::default(),
+            background: Some(Background::Color(Color {
+                r: 0.11,
+                g: 0.42,
+                b: 0.87,
+                a: 1.0,
+            })),
+            border_radius: 10,
+            border_width: Default::default(),
+            border_color: Color::BLACK,
+            text_color: Color::WHITE,
+        }
+    }
 }
 
 // #[derive(Default)]
@@ -29,9 +49,11 @@ pub enum Message {
 }
 
 impl Application for SpaceifierApp {
+    type Executor = executor::Null;
     type Message = Message;
+    type Flags = ();
 
-    fn new() -> (Self, Command<Message>) {
+    fn new(_flags: ()) -> (Self, Command<Message>) {
         (
             SpaceifierApp {
                 text_input_state: text_input::State::new(),
@@ -54,20 +76,10 @@ impl Application for SpaceifierApp {
         // let mut clipboard_provider: ClipboardContext = ClipboardProvider::new().unwrap();
         match message {
             Message::TextInputChanged(new_value) => {
-                if let SpaceifierApp {
-                    text_input_value, ..
-                } = self
-                {
-                    *text_input_value = new_value;
-                }
+                self.text_input_value = new_value;
             }
             Message::NumberInputChanged(new_value) => {
-                if let SpaceifierApp {
-                    number_input_value, ..
-                } = self
-                {
-                    *number_input_value = new_value;
-                }
+                self.number_input_value = new_value;
             }
             Message::CopyButtonPress => {
                 self.clipboard_context
@@ -119,7 +131,7 @@ impl Application for SpaceifierApp {
                             .size(30)
                             .padding(10)
                             .width(Length::Units(100))
-                            .max_width(Length::Units(100)),
+                            .max_width(100),
                         )
                         .spacing(10),
                 )
@@ -137,13 +149,7 @@ impl Application for SpaceifierApp {
                         Text::new("Copy").size(20).color([1.0, 1.0, 1.0]),
                     )
                     .on_press(Message::CopyButtonPress)
-                    .background(Background::Color(Color {
-                        r: 0.11,
-                        g: 0.42,
-                        b: 0.87,
-                        a: 1.0,
-                    }))
-                    .border_radius(10)
+                    .style(CopyButtonStyle)
                     .padding(5),
                 )
                 .padding(20)
