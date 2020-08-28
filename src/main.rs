@@ -4,7 +4,7 @@ use iced::{
 };
 use iced::{executor, Background, Color, HorizontalAlignment, Length};
 
-use clipboard::{ClipboardContext, ClipboardProvider};
+use copypasta::{ClipboardContext, ClipboardProvider};
 
 fn main() {
     SpaceifierApp::run(Settings::default());
@@ -62,7 +62,7 @@ impl Application for SpaceifierApp {
                 number_input_state: text_input::State::new(),
                 number_input_value: String::new(),
                 copy_button_state: button::State::new(),
-                clipboard_context: ClipboardProvider::new().unwrap(),
+                clipboard_context: ClipboardContext::new().unwrap(),
             },
             Command::none(),
         )
@@ -73,7 +73,6 @@ impl Application for SpaceifierApp {
     }
 
     fn update(&mut self, message: Message) -> Command<Message> {
-        // let mut clipboard_provider: ClipboardContext = ClipboardProvider::new().unwrap();
         match message {
             Message::TextInputChanged(new_value) => {
                 self.text_input_value = new_value;

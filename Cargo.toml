@@ -10,4 +10,4 @@ license = "MIT"
 [dependencies]
 spaceifier = { path = "./spaceifier" }
 iced = "0.1"
-clipboard = "0.5"
+copypasta = "0.7"
