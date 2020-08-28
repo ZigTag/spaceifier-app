@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Packages
-      run: sudo apt install xorg xorg-dev libwayland libwayland-dev
+      run: sudo apt install xorg-dev libwayland-dev
     - name: Spaceifier crate test
       run: |
           cd spaceifier
