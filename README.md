@@ -6,7 +6,7 @@ Ex. Hello, world! -> H e l l o ,  w o r l d !
 
 ### Major libraries used
 - [iced](https://github.com/hecrj/iced)
-- [clipboard](https://github.com/aweinstock314/rust-clipboard)
+- [copypasta](https://github.com/alacritty/copypasta)
 
 #### Side notes
 Much of the code was heavily inspired by the [iced](https://github.com/hecrj/iced) examples and documentation.
